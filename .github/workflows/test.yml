@@ -5,7 +5,7 @@ on:
   push:
     branches: [ main, master, develop, 'feature/*' ]
   pull_request:
-    branches: ['feature/*']
+    branches: [main]
 
 jobs:
   test-workflow:
