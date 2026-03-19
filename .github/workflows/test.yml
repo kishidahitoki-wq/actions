@@ -5,44 +5,12 @@ on:
   push:
     branches: [ main, master, develop, 'feature/*' ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, 'feature/*']
 
 jobs:
   test-workflow:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Show branch information
-      run: |
-        echo "=== Git Branch Information ==="
-        echo "Current branch: ${{ github.ref_name }}"
-        echo "Event name: ${{ github.event_name }}"
-        echo "Repository: ${{ github.repository }}"
-        echo "Commit SHA: ${{ github.sha }}"
-        echo "Actor: ${{ github.actor }}"
-        
-    - name: Show event details
-      run: |
-        echo "=== Event Details ==="
-        if [ "${{ github.event_name }}" == "push" ]; then
-          echo "This is a PUSH event"
-          echo "Pushed to branch: ${{ github.ref_name }}"
-        elif [ "${{ github.event_name }}" == "pull_request" ]; then
-          echo "This is a PULL REQUEST event"
-          echo "PR from: ${{ github.head_ref }}"
-          echo "PR to: ${{ github.base_ref }}"
-        fi
-        
-    - name: Confirm workflow file location
-      run: |
-        echo "=== Workflow File Check ==="
-        echo "Checking if workflow file exists in current branch:"
-        ls -la .github/workflows/ || echo "No .github/workflows directory found"
-        
-    - name: Success message
-      run: |
-        echo "✅ Workflow executed successfully!"
-        echo "This proves that the workflow file exists in the ${{ github.ref_name }} branch"
+    - name: mainブランチ
+      run: echo "mainブランチのworkflow"
